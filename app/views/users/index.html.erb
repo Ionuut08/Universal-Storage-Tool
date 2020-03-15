@@ -1,4 +1,7 @@
 BV ba
+<% @session.files.each do |file| %>
+  <%= file.title %>
+<% end %>
 
 
 <%= link_to 'Logout', logout_path, method: :delete %>
