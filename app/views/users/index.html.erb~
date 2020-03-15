@@ -6,7 +6,7 @@
     <meta name="keywords" content="Storage, Drive, Tool">
     <meta name="author" content="Ionut Feraru">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="assets/stylesheets/style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="menu.js"></script>
     <title>Stoly</title>
 
@@ -16,7 +16,7 @@
 <header>
 <div class="header">
     <div id="branding">
-        <img src="assets/images/logo.png" alt="logo">
+        <img src="images/logo.png" alt="logo">
         <h1> Universal Storage tool</h1>
     </div>
 
