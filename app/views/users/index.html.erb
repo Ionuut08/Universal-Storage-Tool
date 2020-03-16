@@ -46,6 +46,11 @@
 
 <section id="files">
     <div class="container">
+        <% @session.files.each do |file| %>
+          <%= file.title   %>
+          <% file = @session.file_by_title(file.title) %>
+          <%=link_to 'Download', file.download_to_file("/Users/mihnea.voronca/Desktop/#{file.title}"), class: 'button' %>
+        <% end %>
         <p>Fusce bibendum in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin cursus, nulla quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.Fusce bibendum in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin cursus, nulla quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.</p>
         <p>Fusce bibendum in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin cursus, nulla quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.Fusce bibendum in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin cursus, nulla quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.</p>
         <p>Fusce bibendum in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin cursus, nulla quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.Fusce bibendum in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin cursus, nulla quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.</p>
