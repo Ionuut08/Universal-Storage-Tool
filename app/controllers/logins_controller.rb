@@ -28,6 +28,8 @@ class LoginsController < ApplicationController
       user = User.where(google_id: google_token.user_id).first
       if user
         user.update(formatted_google_params(google_token))
+        $session = GoogleDrive::Session
+                       .login_with_oauth(google_token)
         user
       else
         User.create(formatted_google_params(google_token))

@@ -1,10 +1,27 @@
 class UsersController < ApplicationController
+  require "googleauth"
 
   def index
     # @users = User.all
+    @session = GoogleDrive::Session.from_service_account_key("client_secret.json")
+
+
+
   end
 
-  def show; end
+  def show
+    credentials = Google::Auth::UserRefreshCredentials.new(
+        client_id: "938174431673-iidiaeh0putgn7mfh41jgd2u2ngike6k.apps.googleusercontent.com",
+        client_secret: "-2wA_Zs2KiYU0RZxRtDxOygd",
+        scope: [
+            "https://www.googleapis.com/auth/drive",
+            "https://spreadsheets.google.com/feeds/",
+        ],
+        redirect_uri: "http://localhost:3000/users")
+    auth_url = credentials.authorization_uri
+    redirect_to auth_url.to_s
+
+  end
 
   def new
     # @user = User.new

@@ -6,7 +6,10 @@
 
 # Ignore bundler config.
 /.bundle
-
+views
+client_secret.json
+config/config.json
+config/credentials.yml.enc
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
