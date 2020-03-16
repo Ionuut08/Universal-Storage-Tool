@@ -2,14 +2,14 @@ class LoginsController < ApplicationController
   skip_before_action :authenticate_user!, except: :logout
 
   def new
-    redirect_to user_path(current_user) if current_user
+    redirect_to users_path if current_user
   end
 
   def create
     user = authenticate_with_google
     if user
       sign_in user
-      redirect_to user_path(current_user)
+      redirect_to users_path
     else
       raise ActionController::RoutingError, 'Forbidden'
     end
@@ -28,6 +28,8 @@ class LoginsController < ApplicationController
       user = User.where(google_id: google_token.user_id).first
       if user
         user.update(formatted_google_params(google_token))
+        $session = GoogleDrive::Session
+                       .login_with_oauth(google_token)
         user
       else
         User.create(formatted_google_params(google_token))
