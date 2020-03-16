@@ -10,6 +10,8 @@ views
 client_secret.json
 config/config.json
 config/credentials.yml.enc
+client_secret.json
+config/secrets.yml
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
