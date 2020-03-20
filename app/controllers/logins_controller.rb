@@ -1,5 +1,6 @@
 class LoginsController < ApplicationController
   skip_before_action :authenticate_user!, except: :logout
+  skip_before_action :verify_authenticity_token
 
   def new
     redirect_to users_path if current_user

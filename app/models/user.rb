@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
   attr_readonly :google_id
 
+  has_many :files
+
   protected
 
   def password_required?
