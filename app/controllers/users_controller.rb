@@ -7,6 +7,10 @@ class UsersController < ApplicationController
     @session = $session
   end
 
+  def trash
+    @session = $session
+  end
+
   def show;
   end
 
