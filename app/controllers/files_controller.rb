@@ -1,4 +1,5 @@
 class FilesController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: [:destroy]
   def index
     #actually the main page
   end
@@ -26,6 +27,30 @@ class FilesController < ApplicationController
     file_name = params[:file_name]
     @drive_file = $session.file_by_title(file_name)
     @drive_file.download_to_file("/Users/mihnea.voronca/Desktop/#{file_name}")
+    redirect_to users_path
+  end
+
+  def destroy
+    file_name = params[:file_name]
+    @drive_file = $session.file_by_title(file_name)
+    if params[:permanent].present?
+      @drive_file.delete(permanent = true)
+      @drive_file = DriveFile.where(name: file_name).first
+      @drive_file.delete
+    else
+      @drive_file.delete(permanent = false)
+      @drive_file = DriveFile.where(name: file_name).first
+      @drive_file.is_deleted = true
+      @drive_file.save
+    end
+    redirect_to users_path
+  end
+
+  def restore
+    file_name = params[:file_name]
+    @drive_file = DriveFile.where(name: file_name).first
+    @drive_file.is_deleted = false
+    @drive_file.save
     redirect_to users_path
   end
 

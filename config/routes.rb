@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   delete 'logout', to: 'logins#logout'
   post 'logout', to: 'logins#logout'
   get 'download_file', to: 'files#download_file'
+  get 'trash', to: 'users#trash'
+  get 'restore', to: 'files#restore'
 
 
   resources :users
