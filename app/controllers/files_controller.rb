@@ -1,5 +1,6 @@
 class FilesController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:destroy]
+
   def index
     #actually the main page
   end
