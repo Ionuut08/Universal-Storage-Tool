@@ -15,8 +15,17 @@ class FilesController < ApplicationController
   def create
     @drive_file = DriveFile.create(file_params.merge(user: current_user))
     begin
-      $session.upload_from_file(@drive_file.path, @drive_file.name, convert: false)
+      if @drive_file.convert_type.nil?
+      $session.upload_from_file(@drive_file.path,
+                                @drive_file.name,
+                                convert: false)
+      else
+      $session.upload_from_file(@drive_file.path,
+                                @drive_file.name,
+                                content_type: "#{@drive_file.convert_type}")
+      end
     rescue Errno::ENOENT
+      redirect_to new_file_path
     end
     redirect_to users_path
   end
@@ -27,7 +36,12 @@ class FilesController < ApplicationController
   def download_file
     file_name = params[:file_name]
     @drive_file = $session.file_by_title(file_name)
-    @drive_file.download_to_file("/Users/mihnea.voronca/Desktop/#{file_name}")
+    begin
+      @drive_file.download_to_file("/Users/mihnea.voronca/Desktop/#{file_name}")
+    rescue NotImplementedError
+        file_type = DriveFile.where(name: file_name).first.convert_type
+        @drive_file.export_as_file("/Users/mihnea.voronca/Desktop/#{file_name}.#{file_type.split('/').last}", file_type)
+    end
     redirect_to users_path
   end
 
@@ -69,7 +83,7 @@ class FilesController < ApplicationController
   private
 
   def file_params
-    params.require(:drive_file).permit(:path, :name)
+    params.require(:drive_file).permit(:path, :name, :convert_type)
   end
 
   def drive_file
