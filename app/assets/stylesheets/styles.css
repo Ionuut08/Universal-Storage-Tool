@@ -1,0 +1,56 @@
+* {box-sizing: border-box;}
+
+body {
+	margin: 0;
+	font-family: 'Montserrat', sans-serif;
+	/*background-image: url('C:\\Users\\ionut\\OneDrive\\Desktop\\New_Stoly\\images\\water.jpg');*/
+	/*background-attachment: fixed;*/
+  	background-size: cover;
+  	background-repeat: no-repeat;
+  	background-blend-mode: soft-light;
+}
+
+.grid {
+	border-radius: 0.285em;
+	box-shadow: 0 0.1em 0 0 rgba(0,0,0,0.1);
+	margin-top: 10px;
+	margin-left: 25%;
+}
+
+.container {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 100px 2fr 50px;
+    grid-auto-rows: minmax(150px, 150px);
+    grid-gap: 20px;
+
+
+    grid-template-areas: 
+    "header" 
+    "nav"
+    "aside"
+    "main" 
+    "footer"; 
+}
+
+
+@media (min-width: 768px) {
+    .container {
+        grid-template-columns: 270px 2fr 50px;
+        grid-template-rows: 35px minmax(150px, auto) 50px;
+        grid-template-areas: 
+        "header header header"
+        "nav main aside"
+        "footer footer footer";
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        grid-template-areas: 
+        "header header header"
+        "nav main aside"
+        "footer footer footer";
+    }
+
+}
