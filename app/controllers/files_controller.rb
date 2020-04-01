@@ -16,16 +16,16 @@ class FilesController < ApplicationController
     @drive_file = DriveFile.create(file_params.merge(user: current_user))
     begin
       if @drive_file.convert_type.nil?
-      $session.upload_from_file(@drive_file.path,
-                                @drive_file.name,
+      $session.upload_from_file(params[:drive_file][:filey].tempfile.path,
+                                @drive_file.name.nil? ? params[:drive_file][:filey].original_filename : @drive_file.name,
                                 convert: false)
       else
-      $session.upload_from_file(@drive_file.path,
-                                @drive_file.name,
+      $session.upload_from_file(params[:drive_file][:filey].tempfile.path,
+                                @drive_file.name.nil? ? params[:drive_file][:filey].original_filename : @drive_file.name,
                                 content_type: "#{@drive_file.convert_type}")
       end
     rescue Errno::ENOENT
-      redirect_to new_file_path
+      redirect_to new_file_path and return 1;
     end
     redirect_to users_path
   end
@@ -83,7 +83,7 @@ class FilesController < ApplicationController
   private
 
   def file_params
-    params.require(:drive_file).permit(:path, :name, :convert_type)
+    params.require(:drive_file).permit(:name, :convert_type, :filey)
   end
 
   def drive_file
