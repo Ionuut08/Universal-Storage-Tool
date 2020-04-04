@@ -31,6 +31,9 @@
 <div id="new">
   <button><%= link_to '*PLUS SIGN* New', new_file_path %></button>
 </div>
+<div id="new">
+  <button><%= link_to 'Split file', split_view_path %></button>
+</div>
 
 <hr>
 
@@ -47,11 +50,13 @@
 <section id="files">
   <div class="container">
     <% @session.files.each do |file| %>
-      <% if DriveFile.available.where(name: file.title) != [] %>
-        <%= file.title %>
-        <%= link_to 'Download', download_file_path(file_name: file.title), class: 'button' %>
-        <%= link_to 'Delete', file_path(id: file.id ,file_name: file.title), method: :delete, class: 'button', data: { confirm: 'Your sure?' } %>
-      <% end %>
+      <div class="container">
+        <% if DriveFile.available.where(name: file.title) != [] %>
+          <%= file.title %>
+          <%= link_to 'Download', download_file_path(file_name: file.title), class: 'button' %>
+          <%= link_to 'Delete', file_path(id: file.id ,file_name: file.title), method: :delete, class: 'button', data: { confirm: 'Your sure?' } %>
+        <% end %>
+      </div>
     <% end %>
     <p>Fusce bibendum in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin
       cursus, nulla quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.Fusce bibendum

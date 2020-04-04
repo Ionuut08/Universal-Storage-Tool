@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get 'download_file', to: 'files#download_file'
   get 'trash', to: 'users#trash'
   get 'restore', to: 'files#restore'
+  get 'split_view', to: 'files#split_view'
+  post 'split_file', to: 'files#split_file'
 
 
   resources :users
