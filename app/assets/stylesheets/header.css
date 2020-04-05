@@ -1,0 +1,40 @@
+header {
+    grid-area: header;
+    height: 56px;
+    position: relative;
+    top: -1.5px;
+    /*background: linear-gradient(to bottom, #003049 70%, #ffffff 100%);*/
+    /*background-color: #065a82;*/
+    display: flex;
+}
+.header-image{
+	width: 40px;
+	border-radius: 50px;
+    margin-left: 5px;
+    margin-top: 10px;
+    align-self: flex-start;
+}
+
+span {
+    color: black;
+    margin-left: 10px;
+    align-self: center;
+    font-weight: 500;
+}
+
+#header-image2 {
+    width: 40px;
+    border-radius: 50px;
+    margin-left: 90%;
+    align-self: flex-end;
+}
+
+.favicon {
+    border-radius: 50px;
+}
+
+.placeholder {
+    flex-direction: row-reverse;
+}
+
+

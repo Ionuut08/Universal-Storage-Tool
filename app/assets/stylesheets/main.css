@@ -1,0 +1,23 @@
+main {
+    /* grid-row: 2 / 3; */
+    grid-area: main;
+    /*background-color: #3891a6;*/
+    grid-column-start: 2;
+    grid-column-end: 3;
+    /*width: calc(100% - 230px);*/
+    transition: all 0.3s ease;
+}
+
+.item-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(230px,1fr));
+    justify-content: center;
+    column-gap: 10px;
+    row-gap: 10px;
+    margin-left: 20px;
+}
+
+.grid-item{
+    width: 200px;
+    height: 200px;
+}
