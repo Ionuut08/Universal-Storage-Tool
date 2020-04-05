@@ -1,169 +1,113 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="description" content="Universal Storage Tool">
-  <meta name="keywords" content="Storage, Drive, Tool">
-  <meta name="author" content="Ionut Feraru">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="assets/stylesheets/style.css">
-  <script src="menu.js"></script>
-  <title>Stoly</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universal Storage Tool</title>
 
+    <link href="https://fonts.googleapis.com/css?family=Caveat|Montserrat:400,600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/aside.css">
+    <link rel="stylesheet" href="css/button.css">
+    <link class="favicon" rel="icon" href="./images/logo.png">
+    <script src="https://kit.fontawesome.com/4a25c70fc7.js" crossorigin="anonymous"></script>
 </head>
-<body id="grad">
 
-<header>
-  <div class="header">
-    <div id="branding">
-      <%= image_tag 'logo.png' %>
-      <h1> Universal Storage tool</h1>
-    </div>
+<body>
+<div class="grid-container">
 
-    <div class="current">
-      <button> CONT</button>
-      <button> INFO</button>
-    </div>
-  </div>
-</header>
+    <header>
+<!--        <i class="fas fa-bars"></i>-->
+        <a href="index.html">
+            <img width="40" alt="Logo" src="images/logo.png" class="header-image">
+        </a>
+        <%= image_tag 'logo.png' %>
+        <span>Universal Storage Tool</span>
+    </header>
 
-<hr>
-<div id="new">
-  <button><%= link_to '*PLUS SIGN* New', new_file_path %></button>
+    <main> <!-- THIS WILL BE THE MAIN PART OF THE PAGE -->
+        <section>  <!-- THE MAIN FILES SECTIONS -->
+            <div class="item-container">
+                <!--					HERE WILL BE THE FILES-->
+                							<% @session.files.each do |file| %>
+            </div>
+        </section>
+   
+    </main>
+
+    <nav>
+        <!-- THIS WILL BE THE MENU -->
+        <div class="sidebar">
+            <div class="button">
+                <div id="spin"></div> 
+                <button><%= link_to '*PLUS SIGN* New', class: 'placeholder', id: 'spin', new_file_path %></button>
+                <a href="#">NEW</a>
+            </div>
+
+            <ul>
+                <li class="active my-drive">
+                    <a href="index.html">
+                        <i class="fas fa-laptop">
+
+                        </i>My Drive
+                    </a>
+                </li>
+
+                <li class="shared-with-me">
+                    <a href="shared_with_me.html">
+                        <i class="far fa-user">
+
+                        </i>Shared with me</a>
+                </li>
+                <li class="recent">
+                    <a href="services.html">
+                        <i class="far fa-clock">
+                        </i>Recent
+                    </a>
+                </li>
+                <li class="favorites">
+                    <a href="favorites.html">
+                        <i class="far fa-heart">
+
+                        </i>Favorites
+                    </a>
+                </li>
+                <li class="trash"><!-- <%=link_to 'Trash', trash_path, class: 'a' %> -->
+                    <a href="trash.html">
+                        <i class="far fa-trash-alt">
+
+                        </i>Trash
+                    </a>
+                </li>
+            </ul>
+
+            <!-- HERE WILL BE THE STORAGE BAR -->
+            <div id="show-storage" style="padding: 8px 16px;">
+                <p><i class="far fa-hdd"></i>Storage</p>
+                <progress id="file" value="32" max="100"> 32%</progress>
+                <p>32 GB of 100 GB used</p>
+            </div>
+            <!--			-->
+            <!--			TO DO:	Add the NEW Button/ style it-->
+        </div>
+
+    </nav>
+
+    <footer>
+        <!-- THIS WILL BE THE FOOTER -->
+        <p id="footer">COPYRIGHT TW CHILDS</p>
+        <!--					Make the footer in its final form-->
+    </footer>
+
+    <aside>
+        <%= image_tag current_user.avatar_url, class: 'placeholder', style: 'placeholder' %>-->
+    </aside>
+
 </div>
-<div id="new">
-  <button><%= link_to 'Split file', split_view_path %></button>
-</div>
-
-<hr>
-
-<nav class="sidenav">
-  <ul>
-    <li class="current"><a href=<%root_path%>>My Drive</a></li>
-    <li><a href="shared_with_me.html">Shared with me</a></li>
-    <li><a href="services.html">Recent</a></li>
-    <li><a href="favorites.html">Favorites</a></li>
-    <li><%=link_to 'Trash', trash_path, class: 'a' %></li>
-  </ul>
-</nav>
-
-<section id="files">
-  <div class="container">
-    <% @session.files.each do |file| %>
-      <div class="container">
-        <% if DriveFile.available.where(name: file.title) != [] %>
-          <%= file.title %>
-          <%= link_to 'Download', download_file_path(file_name: file.title), class: 'button' %>
-          <%= link_to 'Delete', file_path(id: file.id ,file_name: file.title), method: :delete, class: 'button', data: { confirm: 'Your sure?' } %>
-        <% end %>
-      </div>
-    <% end %>
-    <p>Fusce bibendum in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin
-      cursus, nulla quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.Fusce bibendum
-      in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin cursus, nulla
-      quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.</p>
-    <p>Fusce bibendum in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin
-      cursus, nulla quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.Fusce bibendum
-      in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin cursus, nulla
-      quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.</p>
-    <p>Fusce bibendum in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin
-      cursus, nulla quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.Fusce bibendum
-      in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin cursus, nulla
-      quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.</p>
-    <p>Fusce bibendum in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin
-      cursus, nulla quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.Fusce bibendum
-      in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin cursus, nulla
-      quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.</p>
-    <p>Fusce bibendum in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin
-      cursus, nulla quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.Fusce bibendum
-      in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin cursus, nulla
-      quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.</p>
-    <p>Fusce bibendum in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin
-      cursus, nulla quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.Fusce bibendum
-      in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin cursus, nulla
-      quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.</p>
-    <p>Fusce bibendum in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin
-      cursus, nulla quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.Fusce bibendum
-      in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin cursus, nulla
-      quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.</p>
-    <p>Fusce bibendum in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin
-      cursus, nulla quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.Fusce bibendum
-      in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin cursus, nulla
-      quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.</p>
-    <p>Fusce bibendum in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin
-      cursus, nulla quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.Fusce bibendum
-      in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin cursus, nulla
-      quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.</p>
-    <p>Fusce bibendum in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin
-      cursus, nulla quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.Fusce bibendum
-      in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin cursus, nulla
-      quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.</p>
-    <p>Fusce bibendum in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin
-      cursus, nulla quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.Fusce bibendum
-      in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin cursus, nulla
-      quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.</p>
-    <p>Fusce bibendum in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin
-      cursus, nulla quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.Fusce bibendum
-      in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin cursus, nulla
-      quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.</p>
-    <p>Fusce bibendum in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin
-      cursus, nulla quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.Fusce bibendum
-      in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin cursus, nulla
-      quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.</p>
-    <p>Fusce bibendum in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin
-      cursus, nulla quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.Fusce bibendum
-      in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin cursus, nulla
-      quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.</p>
-    <p>Fusce bibendum in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin
-      cursus, nulla quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.Fusce bibendum
-      in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin cursus, nulla
-      quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.</p>
-    <p>Fusce bibendum in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin
-      cursus, nulla quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.Fusce bibendum
-      in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin cursus, nulla
-      quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.</p>
-    <p>Fusce bibendum in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin
-      cursus, nulla quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.Fusce bibendum
-      in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin cursus, nulla
-      quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.</p>
-    <p>Fusce bibendum in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin
-      cursus, nulla quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.Fusce bibendum
-      in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin cursus, nulla
-      quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.</p>
-    <p>Fusce bibendum in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin
-      cursus, nulla quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.Fusce bibendum
-      in ex quis venenatis. Phasellus tincidunt massa at nulla porttitor, ac mattis odio luctus. Proin cursus, nulla
-      quis auctor auctor, turpis sem eleifend dui, et consequat nisl nisi tincidunt metus.</p>
-
-  </div>
-</section>
-
-
-<footer>
-  <p> Copyright &copy; the best team </p>
-</footer>
-<!-- New -->
-<!-- My driver -->
-<!-- Shared with me --> <!-- Sorted by date-->
-<!-- Recent --> <!-- File which were opened recently -->
-<!-- Starred -->
-<!-- _________ -->
-<!-- Storage --> <!-- Not clickable, showing just how much storage is left-->
-
-<!-- My Drive with the options of creating folders etc. -->
-<!-- List view/ Grid view-->
-<!-- Details about the recent activity or details about the current drive or the current folder-->
-<!-- _________________ -->
-<!-- Folders -->
-<!-- Files -->
-<!-- Organized -->
-
-
 </body>
 </html>
-
-
-<%= link_to 'Logout', logout_path, method: :delete if current_user %>
-
-
-

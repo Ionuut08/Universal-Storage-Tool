@@ -1,0 +1,5 @@
+aside {
+    /* grid-row: 2 / 3; */
+    grid-area: aside;
+    /*background-color: #065a82;*/
+}

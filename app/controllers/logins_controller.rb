@@ -25,7 +25,12 @@ class LoginsController < ApplicationController
 
   def authenticate_with_google
     if id_token = flash[:google_sign_in_token]
+      begin
       google_token = GoogleSignIn::Identity.new(id_token)
+    rescue
+
+    end
+      GoogleSignIn::Identity::ValidationError
       user = User.where(google_id: google_token.user_id).first
       if user
         user.update(formatted_google_params(google_token))

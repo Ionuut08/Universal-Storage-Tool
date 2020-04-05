@@ -1,0 +1,68 @@
+* {
+    box-sizing: border-box;}
+
+body {
+	margin: 0;
+	font-family: 'Montserrat', sans-serif;
+	/*background-image: url('C:\\Users\\ionut\\OneDrive\\Desktop\\New_Stoly\\images\\water.jpg');*/
+	/*background-attachment: fixed;*/
+  	background-size: cover;
+  	background-repeat: no-repeat;
+  	background-blend-mode: soft-light;
+    height: 100vh;
+    display: grid;
+}
+
+.grid-container {
+    height: 100vh;
+    display: grid;
+}
+
+@media screen and (max-width: 1300px) {
+    .grid-container {
+        grid-template-columns: 230px 2fr 50px;
+        grid-template-rows: 56px 1fr 70px;
+        grid-template-areas:
+                "header header header"
+                "nav main aside"
+                "nav footer footer";
+    }
+}
+
+@media screen and (min-width: 800px) {
+    /* Dispare meniul de tot */
+    .grid-container {
+        grid-template-columns: 230px 1fr 50px;
+        grid-template-rows: 56px 1fr 70px;
+        grid-template-areas:
+                "header header header"
+                "nav main aside"
+                "nav footer footer";
+    }
+}
+
+@media screen and (max-width: 799px) {
+    .grid-container {
+        grid-template-columns: 72px 1fr 50px;
+        grid-template-rows: 56px 1fr 70px;
+        grid-template-areas:
+                "header header header"
+                "nav main aside"
+                "nav footer footer";
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .grid-container {
+        grid-template-columns: auto 1fr 50px;
+        grid-template-rows: 56px 1fr 70px;
+        grid-template-areas:
+                "header header header"
+                "main main aside"
+                "footer footer footer";
+    }
+
+    .item-container {
+        align-self: center;
+    }
+}
