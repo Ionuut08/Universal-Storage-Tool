@@ -30,6 +30,40 @@ class FilesController < ApplicationController
     redirect_to users_path
   end
 
+  def split_view
+    new
+  end
+
+  def split_file
+    file_num = 0
+    bytes    = 0
+    parameters = params[:drive_file][:filey]
+    file_path = parameters.tempfile.path
+    file_name = parameters.original_filename.split('.')[0]
+    file_extension = parameters.original_filename.split('.')[1]
+    File.open("#{file_path}", 'r') do |data_in|
+      data_out = File.open("/Users/mihnea.voronca/Desktop/#{file_name}#{file_num}.#{file_extension}", 'w')
+
+      data_in.each_line do |line|
+        data_out = File.open("/Users/mihnea.voronca/Desktop/#{file_name}#{file_num}.#{file_extension}", 'w') unless data_out.respond_to? :write
+        data_out.puts line
+
+        bytes += line.length
+
+        if bytes >= DriveFile::MAX_BYTES
+          bytes = 0
+          file_num += 1
+          data_out.close
+          data_out = File.open("/Users/mihnea.voronca/Desktop/#{file_name}#{file_num}.#{file_extension}", 'w')
+        end
+      end
+
+      data_out.close if data_out.respond_to? :close
+    end
+
+    redirect_to root_path
+  end
+
   def edit;
   end
 
