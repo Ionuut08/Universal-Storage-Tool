@@ -1,101 +1,122 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  	<title>Universal Storage Tool</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universal Storage Tool</title>
 
-  	<link href="https://fonts.googleapis.com/css?family=Caveat|Montserrat:400,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Caveat|Montserrat:400,600&display=swap" rel="stylesheet">
 
-  	<link rel="stylesheet" href="../../assets/stylesheets/styles.css">
-  	<link rel="stylesheet" href="../../assets/stylesheets/footer.css">
-  	<link rel="stylesheet" href="../../assets/stylesheets/main.css">
-  	<link rel="stylesheet" href="../../assets/stylesheets/nav.css">
-  	<link rel="stylesheet" href="../../assets/stylesheets/header.css">
-	<link rel="stylesheet" href="../../assets/stylesheets/aside.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/aside.css">
+    <link rel="stylesheet" href="css/button.css">
+    <link class="favicon" rel="icon" href="./images/logo.png">
+    <script src="https://kit.fontawesome.com/4a25c70fc7.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-	<div class="container">
-		<header>
-			<div class="toolbar" role="banner">
-			  <img width="40" alt="Logo" src="images/logo.png" class="header-image">
-  				<span>Universal Storage Tool</span>
-    				<div class="spacer"></div>
-				<div class="topnav">
-					<label>
-						<input type="text" placeholder="Search..">
-					</label>
-				</div>
-    			<img src="https://picsum.photos/50" alt="account info" class="header-image">
-			</div>
+<div class="grid-container">
 
-<!--			TO DO: Make the logo go to home page-->
-<!--					Align the search-bar with the main-->
-<!--					-->
-		</header>
+    <header>
+<!--        <i class="fas fa-bars"></i>-->
+        <a href="index.html">
+            <img width="40" alt="Logo" src="images/logo.png" class="header-image">
+        </a>
+        <%= image_tag 'logo.png' %>
+        <span>Universal Storage Tool</span>
+    </header>
 
-		<main> <!-- THIS WILL BE THE MAIN PART OF THE PAGE -->
-			<section>
-				<!-- THE MAIN FILES SECTIONS -->
-				 <hr>
-	        	<div class="item-container">
-<!--					HERE WILL BE THE FILES-->
-							<% @session.files.each do |file| %>
-								<% if DriveFile.available.where(name: file.title) != [] %>
-									<%= file.title %>
-									<%= link_to 'Download', download_file_path(file_name: file.title), class: 'button' %>
-									<%= link_to 'Delete', file_path(id: file.id ,file_name: file.title), method: :delete, class: 'button', data: { confirm: 'Your sure?' } %>
-								<% end %>
-							<% end %>
+    <main> <!-- THIS WILL BE THE MAIN PART OF THE PAGE -->
+        <section>  <!-- THE MAIN FILES SECTIONS -->
+        	<% @session.files.each do |file| %>
+	            <div class="item-container">
+	                <!--					HERE WILL BE THE FILES-->
+			        <% if DriveFile.available.where(name: file.title) != [] %>
+			          <%= file.title %>
+			          <%= link_to 'Download', download_file_path(file_name: file.title), class: 'button' %>
+			          <%= link_to 'Delete', file_path(id: file.id ,file_name: file.title), method: :delete, class: 'button', data: { confirm: 'Your sure?' } %>
+			        <% end %>
+	      		</div>
+    		<% end %>
+            </div>
+        </section>
+   
+    </main>
 
-				</div>
-			</section>
-<!--			-->
-<!--			TO DO: 	Make the files uploaded to appear here-->
-<!--					Correct the responsiveness of this grid-->
-<!--					-->
-		</main>
-		<nav>
-			<!-- THIS WILL BE THE MENU -->
-			<hr>
-	        <ul>
-	            <li class="active">
-	            	<!-- <div class="arrow-up"></div> -->
-	            	<a href="index.html">My Drive</a></li>
-	            <li><a href="shared_with_me.html">Shared with me</a></li>
-	            <li><a href="services.html">Recent</a></li>
-	            <li><a href="favorites.html">Favorites</a></li>
-	            <li><!-- <%=link_to 'Trash', trash_path, class: 'a' %> -->
-	             <a href="trash.html">Trash</a></li>
-	        </ul>
-	        <hr>
+    <nav>
+        <!-- THIS WILL BE THE MENU -->
+        <div class="sidebar">
+            <div class="button">
+                <div id="spin"></div> 
+                <button><%= link_to '*PLUS SIGN* New', class: 'placeholder', id: 'spin', new_file_path %></button>
+                <a href="#">NEW</a>
+            </div>
 
-	        <!-- HERE WILL BE THE STORAGE BAR -->
-	        <div id="show-storage" style="padding: 8px 16px;">
-	            <p>Storage</p>
-	            <progress id="file" value="32" max="100"> 32% </progress>
-	            <p>32 GB of 100 GB used</p>
-	        </div>
-<!--			-->
-<!--			TO DO:	Add the NEW Button/ style it-->
-<!--					Correct the responsiveness of the menu-->
-<!--					Make the pages for the menu
-						Make the arrow pointers-->
-		</nav>
-		<footer>
-			<!-- THIS WILL BE THE FOOTER -->
-			<p id="footer">COPYRIGHT TW CHILDS</p>
-<!--			-->
-<!--			TO DO:	Correct the responsiveness here, also-->
-<!--					Make the footer in its final form-->
-		</footer>
+            <ul>
+                <li class="active my-drive">
+                    <a href="index.html">
+                        <i class="fas fa-laptop">
 
-		<aside>
-<!--				TO DO:	Assign some items into this component-->
-<!--						Correct the responsiveness.-->
-		</aside>
-	</div>
+                        </i>My Drive
+                    </a>
+                </li>
+
+                <li class="shared-with-me">
+                    <a href="shared_with_me.html">
+                        <i class="far fa-user">
+
+                        </i>Shared with me</a>
+                </li>
+                <li class="recent">
+                    <a href="services.html">
+                        <i class="far fa-clock">
+                        </i>Recent
+                    </a>
+                </li>
+                <li class="favorites">
+                    <a href="favorites.html">
+                        <i class="far fa-heart">
+
+                        </i>Favorites
+                    </a>
+                </li>
+                <li class="trash"><%=link_to 'Trash', trash_path, class: 'a' %>
+                    <a href="trash.html">
+                        <i class="far fa-trash-alt">
+
+                        </i>Trash
+                    </a>
+                </li>
+            </ul>
+
+            <!-- HERE WILL BE THE STORAGE BAR -->
+            <div id="show-storage" style="padding: 8px 16px;">
+                <p><i class="far fa-hdd"></i>Storage</p>
+                <progress id="file" value="32" max="100"> 32%</progress>
+                <p>32 GB of 100 GB used</p>
+            </div>
+            <!--			-->
+            <!--			TO DO:	Add the NEW Button/ style it-->
+        </div>
+
+    </nav>
+
+    <footer>
+        <!-- THIS WILL BE THE FOOTER -->
+        <p id="footer">Copyright &copy; the best team </p>
+        <!--					Make the footer in its final form-->
+    </footer>
+
+    <aside>
+        <%= image_tag current_user.avatar_url, class: 'placeholder', style: 'placeholder' %>-->
+    </aside>
+
+</div>
 </body>
 </html>
+
 <%= link_to 'Logout', logout_path, method: :delete if current_user %>
