@@ -24,7 +24,7 @@ class LoginsController < ApplicationController
   private
 
   def authenticate_with_google
-    if id_token = flash[:google_sign_in_token]
+    if (id_token = flash[:google_sign_in_token])
       google_token = GoogleSignIn::Identity.new(id_token)
       user = User.where(google_id: google_token.user_id).first
       if user
@@ -35,7 +35,7 @@ class LoginsController < ApplicationController
       else
         User.create(formatted_google_params(google_token))
       end
-    elsif error = flash[:google_sign_in][:error]
+    elsif (error = flash[:google_sign_in][:error])
       logger.error "Google authentication error: #{error}"
       nil
     end

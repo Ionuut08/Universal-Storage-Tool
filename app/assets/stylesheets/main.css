@@ -20,3 +20,9 @@ main {
     border-radius: 5%;
     padding: 10px;
 }
+
+.item-container .button {
+    margin: 5px;
+    padding: 10px;
+    justify-content: flex-end;
+}
