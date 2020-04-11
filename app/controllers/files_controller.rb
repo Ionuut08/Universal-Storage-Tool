@@ -35,32 +35,54 @@ class FilesController < ApplicationController
   end
 
   def split_file
-    file_num = 0
-    bytes    = 0
-    parameters = params[:drive_file][:filey]
-    file_path = parameters.tempfile.path
-    file_name = parameters.original_filename.split('.')[0]
-    file_extension = parameters.original_filename.split('.')[1]
-    File.open("#{file_path}", 'r') do |data_in|
-      data_out = File.open("/Users/mihnea.voronca/Desktop/#{file_name}#{file_num}.#{file_extension}", 'w')
+    begin
+      file_num = 0
+      bytes    = 0
+      parameters = params[:drive_file][:filey]
+      file_path = parameters.tempfile.path
+      file_name = parameters.original_filename.split('.')[0]
+      file_extension = parameters.original_filename.split('.')[1]
+      File.open("#{file_path}", 'r') do |data_in|
+        data_out = File.open("/Users/mihnea.voronca/Desktop/#{file_name}#{file_num}.#{file_extension}", 'w')
 
-      data_in.each_line do |line|
-        data_out = File.open("/Users/mihnea.voronca/Desktop/#{file_name}#{file_num}.#{file_extension}", 'w') unless data_out.respond_to? :write
-        data_out.puts line
+        data_in.each_line do |line|
+          data_out = File.open("/Users/mihnea.voronca/Desktop/#{file_name}#{file_num}.#{file_extension}", 'w') unless data_out.respond_to? :write
+          data_out.puts line
 
-        bytes += line.length
+          bytes += line.length
 
-        if bytes >= DriveFile::MAX_BYTES
-          bytes = 0
-          file_num += 1
-          data_out.close
-          data_out = File.open("/Users/mihnea.voronca/Desktop/#{file_name}#{file_num}.#{file_extension}", 'w')
+          if bytes >= DriveFile::MAX_BYTES
+            bytes = 0
+            file_num += 1
+            data_out.close
+            data_out = File.open("/Users/mihnea.voronca/Desktop/#{file_name}#{file_num}.#{file_extension}", 'w')
+          end
         end
+
+        data_out.close if data_out.respond_to? :close
       end
-
-      data_out.close if data_out.respond_to? :close
+      rescue NoMethodError
+        redirect_to split_view_path and return 1;
     end
+    redirect_to root_path
+  end
 
+  def merge_view
+    new
+  end
+
+  def merge_file
+    begin
+      param_name = params[:drive_file][:filey].original_filename.split('.')
+      file_name = param_name[0][0...-1]
+      if param_name[1] == nil
+        %x|cd ~/Desktop; cat #{file_name}[0-9]* >> #{file_name}; rm #{file_name}[0-9]*|
+      else
+        %x|cd ~/Desktop; cat #{file_name}[0-9]* >> #{file_name}.#{param_name[1]}; rm #{file_name}[0-9]*|
+      end
+    rescue NoMethodError
+      redirect_to merge_view_path and return 1;
+    end
     redirect_to root_path
   end
 
