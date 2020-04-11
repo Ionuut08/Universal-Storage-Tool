@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get 'restore', to: 'files#restore'
   get 'split_view', to: 'files#split_view'
   post 'split_file', to: 'files#split_file'
+  get 'merge_view', to: 'files#merge_view'
+  post 'merge_file', to: 'files#merge_file'
 
 
   resources :users
