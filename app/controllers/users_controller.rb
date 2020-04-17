@@ -3,8 +3,8 @@ class UsersController < ApplicationController
 
   def index
     #actually the main page
-    $session = GoogleDrive::Session.from_service_account_key("client_secret.json")
-    @session = $session
+    # $session = GoogleDrive::Session.from_service_account_key("client_secret.json")
+    # @session = $session
   end
 
   def trash

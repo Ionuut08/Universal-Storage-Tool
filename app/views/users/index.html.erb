@@ -7,11 +7,11 @@
 
     <link href="https://fonts.googleapis.com/css?family=Caveat|Montserrat:400,600&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="../../assets/stylesheets/styles.css">
+    <%= stylesheet_link_tag "styles" %>
     <link rel="stylesheet" href="../../assets/stylesheets/footer.css">
     <link rel="stylesheet" href="../../assets/stylesheets/main.css">
     <link rel="stylesheet" href="../../assets/stylesheets/nav.css">
-    <link rel="stylesheet" href="../../assets/stylesheets/header.css">
+    <%= stylesheet_link_tag "header" %>
     <link rel="stylesheet" href="../../assets/stylesheets/aside.css">
     <link rel="stylesheet" href="../../assets/stylesheets/button.css">
     <link class="favicon" rel="icon" href="../../assets/images/logo.png">
@@ -21,7 +21,7 @@
 <div class="grid-container">
 
     <header>
-<!--        <i class="fas fa-bars"></i>-->
+    <!--        <i class="fas fa-bars"></i>-->
         <a href="index.html">
             <img width="40" alt="Logo" src="images/logo.png" class="header-image">
         </a>
@@ -31,16 +31,7 @@
 
     <main> <!-- THIS WILL BE THE MAIN PART OF THE PAGE -->
         <section>  <!-- THE MAIN FILES SECTIONS -->
-        	<% @session.files.each do |file| %>
-	            <div class="item-container">
-	                <!--					HERE WILL BE THE FILES-->
-			        <% if DriveFile.available.where(name: file.title) != [] %>
-			          <%= file.title %>
-			          <%= link_to 'Download', download_file_path(file_name: file.title), class: 'button' %>
-			          <%= link_to 'Delete', file_path(id: file.id ,file_name: file.title), method: :delete, class: 'button', data: { confirm: 'Your sure?' } %>
-			        <% end %>
-	      		</div>
-    		<% end %>
+        	 
         </section>
    
     </main>
@@ -50,7 +41,7 @@
         <div class="sidebar">
             <div class="button">
                 <div id="spin"></div> 
-<!--                <button><%#= link_to 'New', class: 'placeholder', id: 'spin', new_file_path %></button>-->
+                    <!--                <button><%#= link_to 'New', class: 'placeholder', id: 'spin', new_file_path %></button>-->
                 <a href="#">NEW</a>
             </div>
 
@@ -106,15 +97,15 @@
     <footer>
         <!-- THIS WILL BE THE FOOTER -->
         <p id="footer">Copyright &copy; the best team </p>
-        <!--					Make the footer in its final form-->
+            <!--					Make the footer in its final form-->
     </footer>
 
     <aside>
-        <%= image_tag current_user.avatar_url, class: 'placeholder', style: 'placeholder' %>-->
+        <%# <%= image_tag current_user.avatar_url, class: 'placeholder', style: 'placeholder' %>
     </aside>
 
 </div>
 </body>
 </html>
 
-<%= link_to 'Logout', logout_path, method: :delete if current_user %>
+<%# <%= link_to 'Logout', logout_path, method: :delete if current_user %>
