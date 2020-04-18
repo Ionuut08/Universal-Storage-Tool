@@ -3,29 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Universal Storage Tool">
+    <meta name="keywords" content="Storage, Drive, Tool">
+    <meta name="author" content="Ionut Feraru">
     <title>Universal Storage Tool</title>
-
-    <link href="https://fonts.googleapis.com/css?family=Caveat|Montserrat:400,600&display=swap" rel="stylesheet">
-
-    <%= stylesheet_link_tag "styles" %>
-    <link rel="stylesheet" href="../../assets/stylesheets/footer.css">
-    <link rel="stylesheet" href="../../assets/stylesheets/main.css">
-    <link rel="stylesheet" href="../../assets/stylesheets/nav.css">
-    <%= stylesheet_link_tag "header" %>
-    <link rel="stylesheet" href="../../assets/stylesheets/aside.css">
-    <link rel="stylesheet" href="../../assets/stylesheets/button.css">
-    <link class="favicon" rel="icon" href="../../assets/images/logo.png">
-    <script src="https://kit.fontawesome.com/4a25c70fc7.js" crossorigin="anonymous"></script>
+    <%# <link href="https://fonts.googleapis.com/css?family=Caveat|Montserrat:400,600&display=swap" rel="stylesheet"> %>
+    <%# <script src="https://kit.fontawesome.com/4a25c70fc7.js" crossorigin="anonymous"></script> %>
+   
+    
 </head>
 <body>
 <div class="grid-container">
 
-    <header>
-    <!--        <i class="fas fa-bars"></i>-->
+    <header class="header">
+        <!--        <i class="fas fa-bars"></i>-->
         <a href="index.html">
-            <img width="40" alt="Logo" src="images/logo.png" class="header-image">
+            <%= image_tag 'logo.png' %>
         </a>
-        <%= image_tag 'logo.png' %>
+        
         <span>Universal Storage Tool</span>
     </header>
 
@@ -94,11 +89,12 @@
 
     </nav>
 
-    <footer>
+    <div class="footer">
+
         <!-- THIS WILL BE THE FOOTER -->
         <p id="footer">Copyright &copy; the best team </p>
             <!--					Make the footer in its final form-->
-    </footer>
+    </div>
 
     <aside>
         <%# <%= image_tag current_user.avatar_url, class: 'placeholder', style: 'placeholder' %>

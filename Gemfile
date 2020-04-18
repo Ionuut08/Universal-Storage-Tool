@@ -35,6 +35,8 @@ gem 'google_drive'
 
 gem 'google-api-client', '~> 0.34'
 
+gem 'pure-css-rails'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 

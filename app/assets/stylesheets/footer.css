@@ -1,7 +1,8 @@
-footer {
+.footer {
     /* grid-column: 1 / -1; */
     grid-area: footer;
     background-color: skyblue;
+    height: 60px;
 }
 
 #footer {
