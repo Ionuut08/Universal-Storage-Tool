@@ -1,49 +1,46 @@
 
-/* 
-.header {
-    grid-area: header;
-    height: 60px;
-    position: relative;
-    top: -1.5px;
-} */
-/* 
-.spacer {
-    flex: 1;
-  }
-
-.toolbar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    color: black;
-    font-weight: 600;
-  }
-
-.topnav {
-  overflow: hidden;
-  margin-right: 300px;
-  position: relative;
-
+.header{
+  height: 100px;
+  /* flex-grow: 1; */
+  border-bottom: 1px solid hsl(0, 0%, 80%);
+  background-color: #2c292f;
+  padding:20px 10;
+  width: 100%;
 }
 
-.topnav input[type=text] {
-  float: left;
-  padding: 6px;
-  margin-top: 8px;
-  margin-right: 16px;
-  border: none;
-  font-size: 17px;
-  border-radius: 8px;
-  max-width: 720px;
-  height: 45px;
-  vertical-align: middle;
-  white-space: nowrap;
-  -webkit-box-align: center;
+.header ul {
+  list-style-type: none;
+  padding: 0; margin: 0;
+  background-color: #2c292f;
+  margin: 1em 0 .5em;
   display: flex;
-  align-items: center;
-  background-color: #f1f3f4;
-} */
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.header li {
+  display: inline;
+}
+
+.header li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  align-self: center;
+}
+
+.header li a:hover {
+background: hsl(0, 0%, 25%);
+} 
+
+.account-photo {
+  width: 50px;
+  border-radius: 50%;
+}
+
+.logo {
+  width: 50px;
+  border-radius: 50px;
+  margin-left: 5px;
+  margin-top: 10px;
+}

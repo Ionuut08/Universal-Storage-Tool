@@ -7,9 +7,8 @@
     <meta name="keywords" content="Storage, Drive, Tool">
     <meta name="author" content="Ionut Feraru">
     <title>Universal Storage Tool</title>
-    <%# <link href="https://fonts.googleapis.com/css?family=Caveat|Montserrat:400,600&display=swap" rel="stylesheet"> %>
-    <%# <script src="https://kit.fontawesome.com/4a25c70fc7.js" crossorigin="anonymous"></script> %>
-   
+    <link href="https://fonts.googleapis.com/css?family=Caveat|Montserrat:400,600&display=swap" rel="stylesheet"> 
+    <script src="https://kit.fontawesome.com/4a25c70fc7.js" crossorigin="anonymous"></script>
     <a href="#"></a>
 </head>
 <body>
@@ -37,64 +36,60 @@
 
     <div class="main-section">
         <div class="nav">
-            <!-- THIS WILL BE THE MENU -->
-            <!-- <div class="sidebar">
-                <div class="button">
-                    <div id="spin"></div>
-                    <a href="#">NEW</a>
+            	<div class="sidebar">
+	                    <div class="dropdown">
+                            <button class="dropbtn">NEW</button>
+                            <div class="dropdown-content">
+                                <a href="#">New</a>
+                                <a href="#">Split file</a>
+                                <a href="#">Merge file locally</a>
+                            </div>
+	                    </div>
+
+	                    <ul class="menu">
+                            <li class="my-drive active">
+                                <i class="fas fa-laptop"></i>
+                                    <a href="index.html">
+                                        <span>My Drive</span></a>
+	                        </li>
+
+                            <li class="shared-with-me">
+                                <i class="far fa-user"></i>
+                                    <a href="shared_with_me.html">
+                                        Shared with me</a>
+	                        </li>
+                            <li class="recent">
+                                <i class="far fa-clock"></i>
+                                    <a href="services.html">
+                                        Recent</a>
+                                    
+	                        </li>
+                            <li class="favorites">
+                                <i class="far fa-heart"></i>
+                                    <a href="favorites.html">
+                                        Favorites
+                                    </a>
+	                        </li>
+                            <li class="trash">
+                                <i class="far fa-trash-alt"></i>
+                                        <a href="trash.html">
+                                        Trash
+                                    </a>
+	                        </li>
+	                    </ul> 
+                    
                 </div>
 
-                <ul class="menu">
-                    <li class="active my-drive">
-                        <a href="index.html">
-                            <i class="fas fa-laptop">
-
-                            </i>My Drive
-                        </a>
-                    </li>
-
-                    <li class="shared-with-me">
-                        <a href="shared_with_me.html">
-                            <i class="far fa-user">
-
-                            </i>Shared with me</a>
-                    </li>
-                    <li class="recent">
-                        <a href="services.html">
-                            <i class="far fa-clock">
-                            </i>Recent
-                        </a>
-                    </li>
-                    <li class="favorites">
-                        <a href="favorites.html">
-                            <i class="far fa-heart">
-
-                            </i>Favorites
-                        </a>
-                    </li>
-                    <li class="trash"><%=link_to 'Trash', trash_path, class: 'a' %> -->
-                        <!-- <a href="trash.html">
-                            <i class="far fa-trash-alt">
-
-                            </i>Trash
-                        </a>
-                    </li>
-                </ul> -->
-
-                <!-- HERE WILL BE THE STORAGE BAR -->
-                <!-- <div id="show-storage" style="padding: 8px 16px;">
-                    <p><i class="far fa-hdd"></i>Storage</p>
-                    <progress id="file" value="32" max="100"> 32%</progress>
-                    <p>32 GB of 100 GB used</p>
-                </div> -->
-                <!--			-->
-                <!--			TO DO:	Add the NEW Button/ style it-->
-            <%# </div>  %>
-            <span>NAV</span>
+                    <!-- HERE WILL BE THE STORAGE BAR -->
+                        <!-- <div id="show-storage" style="padding: 8px 16px;">
+                            <p><i class="far fa-hdd"></i>Storage</p>
+                            <progress id="file" value="32" max="100"> 32%</progress>
+                            <p>32 GB of 100 GB used</p>
+                        </div>  -->
         </div>
 
-        <div class="main"> <!-- THIS WILL BE THE MAIN PART OF THE PAGE -->
-            <section>  <!-- THE MAIN FILES SECTION -->
+        <div class="main">
+            <section>
                 <div class="file-container">						
                 </div>                                           
             </section>        
@@ -102,7 +97,6 @@
         </div>
         
         <div class="aside">
-            <!--				TO DO:	Assign some items into this component-->
             <span>ASIDE</span>
         </div>
     </div>
