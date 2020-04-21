@@ -10,98 +10,100 @@
     <%# <link href="https://fonts.googleapis.com/css?family=Caveat|Montserrat:400,600&display=swap" rel="stylesheet"> %>
     <%# <script src="https://kit.fontawesome.com/4a25c70fc7.js" crossorigin="anonymous"></script> %>
    
-    
+    <a href="#"></a>
 </head>
 <body>
-<div class="grid-container">
+<div class="container">
 
-    <header class="header">
-        <!--        <i class="fas fa-bars"></i>-->
-        <a href="index.html">
-            <%= image_tag 'logo.png' %>
-        </a>
-        
-        <span>Universal Storage Tool</span>
-    </header>
-
-    <main> <!-- THIS WILL BE THE MAIN PART OF THE PAGE -->
-        <section>  <!-- THE MAIN FILES SECTIONS -->
-        	 
-        </section>
-   
-    </main>
-
-    <nav>
-        <!-- THIS WILL BE THE MENU -->
-        <div class="sidebar">
-            <div class="button">
-                <div id="spin"></div> 
-                    <!--                <button><%#= link_to 'New', class: 'placeholder', id: 'spin', new_file_path %></button>-->
-                <a href="#">NEW</a>
-            </div>
-
-            <ul>
-                <li class="active my-drive">
-                    <a href="index.html">
-                        <i class="fas fa-laptop">
-
-                        </i>My Drive
-                    </a>
-                </li>
-
-                <li class="shared-with-me">
-                    <a href="shared_with_me.html">
-                        <i class="far fa-user">
-
-                        </i>Shared with me</a>
-                </li>
-                <li class="recent">
-                    <a href="services.html">
-                        <i class="far fa-clock">
-                        </i>Recent
-                    </a>
-                </li>
-                <li class="favorites">
-                    <a href="favorites.html">
-                        <i class="far fa-heart">
-
-                        </i>Favorites
-                    </a>
-                </li>
-                <li class="trash"><%=link_to 'Trash', trash_path, class: 'a' %>
-                    <a href="trash.html">
-                        <i class="far fa-trash-alt">
-
-                        </i>Trash
-                    </a>
-                </li>
-            </ul>
-
-            <!-- HERE WILL BE THE STORAGE BAR -->
-            <div id="show-storage" style="padding: 8px 16px;">
-                <p><i class="far fa-hdd"></i>Storage</p>
-                <progress id="file" value="32" max="100"> 32%</progress>
-                <p>32 GB of 100 GB used</p>
-            </div>
-            <!--			-->
-            <!--			TO DO:	Add the NEW Button/ style it-->
-        </div>
-
-    </nav>
-
-    <div class="footer">
-
-        <!-- THIS WILL BE THE FOOTER -->
-        <p id="footer">Copyright &copy; the best team </p>
-            <!--					Make the footer in its final form-->
+    <div class="header">
+        <ul>
+            <li><a href="index.html.erb">
+                        <%= image_tag 'logo.png', :class => "logo"%>
+                </a></li>
+            <li><a href="#">Universal Storage Tool</a></li>
+        </ul>
     </div>
 
-    <aside>
-        <%# <%= image_tag current_user.avatar_url, class: 'placeholder', style: 'placeholder' %>
-    </aside>
+    <div class="main-section">
+        <div class="nav">
+            <!-- THIS WILL BE THE MENU -->
+            <!-- <div class="sidebar">
+                <div class="button">
+                    <div id="spin"></div>
+                    <a href="#">NEW</a>
+                </div>
 
+                <ul class="menu">
+                    <li class="active my-drive">
+                        <a href="index.html">
+                            <i class="fas fa-laptop">
+
+                            </i>My Drive
+                        </a>
+                    </li>
+
+                    <li class="shared-with-me">
+                        <a href="shared_with_me.html">
+                            <i class="far fa-user">
+
+                            </i>Shared with me</a>
+                    </li>
+                    <li class="recent">
+                        <a href="services.html">
+                            <i class="far fa-clock">
+                            </i>Recent
+                        </a>
+                    </li>
+                    <li class="favorites">
+                        <a href="favorites.html">
+                            <i class="far fa-heart">
+
+                            </i>Favorites
+                        </a>
+                    </li>
+                    <li class="trash"><%=link_to 'Trash', trash_path, class: 'a' %> -->
+                        <!-- <a href="trash.html">
+                            <i class="far fa-trash-alt">
+
+                            </i>Trash
+                        </a>
+                    </li>
+                </ul> -->
+
+                <!-- HERE WILL BE THE STORAGE BAR -->
+                <!-- <div id="show-storage" style="padding: 8px 16px;">
+                    <p><i class="far fa-hdd"></i>Storage</p>
+                    <progress id="file" value="32" max="100"> 32%</progress>
+                    <p>32 GB of 100 GB used</p>
+                </div> -->
+                <!--			-->
+                <!--			TO DO:	Add the NEW Button/ style it-->
+            <%# </div>  %>
+            <span>NAV</span>
+        </div>
+
+        <div class="main"> <!-- THIS WILL BE THE MAIN PART OF THE PAGE -->
+            <section>  <!-- THE MAIN FILES SECTION -->
+                <div class="file-container">						
+                </div>                                           
+            </section>        
+            <span>MAIN</span>               
+        </div>
+        
+        <div class="aside">
+            <!--				TO DO:	Assign some items into this component-->
+            <span>ASIDE</span>
+        </div>
+    </div>
+
+
+    <div class="footer">
+        <!-- THIS WILL BE THE FOOTER -->
+        <!-- <p id="footer">COPYRIGHT TW CHILDS</p> -->
+        <span>FOOTER</span>
+    </div>
 </div>
 </body>
 </html>
 
-<%# <%= link_to 'Logout', logout_path, method: :delete if current_user %>
+
