@@ -1,20 +1,12 @@
 
-.header-image{
-	width: 40px;
-	border-radius: 50px;
-}
-
-h1 {
-	font-family: 'Caveat', cursive;
-}
-
+/* 
 .header {
     grid-area: header;
     height: 60px;
     position: relative;
     top: -1.5px;
-}
-
+} */
+/* 
 .spacer {
     flex: 1;
   }
@@ -54,4 +46,4 @@ h1 {
   display: flex;
   align-items: center;
   background-color: #f1f3f4;
-}
+} */

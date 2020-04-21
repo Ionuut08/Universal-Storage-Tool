@@ -1,13 +1,11 @@
-nav {
-    grid-area: nav;
-}
 
-/* ACTIVE COLOR: #e8f0fe */
+
+/* ACTIVE COLOR: #e8f0fe
 .active {
 	background-color:  #e8f0fe;
 	border-radius: 100px;
-}
-
+} */
+/* 
 #file {
 	margin-left: 5px;
 }
@@ -22,9 +20,7 @@ ul {
   li a {
 	display: block;
 	color: #000;
-	padding: 8px 16px;
-	text-decoration: none;
-  }
+	padding: 8px 16px; */
 
 /*li:before {*/
 /*	content: "\25BA \0020";*/
@@ -33,7 +29,7 @@ ul {
 /*	top: 5px;*/
 /*	left: -10px;*/
 /*}*/
-
+/* 
 li a.active {
 	  	color: white;
 		background-color:  #e8f0fe;
@@ -43,10 +39,10 @@ li a.active {
   li a:hover:not(.active) {
 	background-color: #e8f0fe;
 	/*color: white;*/
-	  border-radius: 100px;
-  }
+	  /* border-radius: 100px; */
+  
 
-  li:last-child {
+  /* li:last-child {
 	border-bottom: none;
-  }
+  } */ 
 
