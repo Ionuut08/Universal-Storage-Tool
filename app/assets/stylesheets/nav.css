@@ -2,12 +2,14 @@
 .nav {
     flex-grow: 1;
     border-right: 1px solid #CCC;
+    position: relative;
 }
 
 .menu {
     list-style-type: none;
     border-bottom: none;
     width: 220px;
+    padding-left: 15px;
 }
 
 .menu li {
@@ -29,18 +31,18 @@ svg.svg-inline--fa {
 .menu :hover:not(i) {
     background-color: #CCC;
     border-radius: 20px;
-    width: 225px;
+    width: 200px;
 }
 
 .menu .active {
     background-color: #CCC;
     border-radius: 20px;
-    width: 225px;
+    width: 200px;
 }
 
 #show-storage {
-    padding: 8px 16px;
-    margin-left: 30px;
+    padding: 8px 10px;
+    margin-left: 10px;
     border-top: 1px solid #CCC;
 }
 

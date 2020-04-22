@@ -27,14 +27,9 @@ body {
 }
 
 
-.main {
-    flex-grow: 15;
-    background-color: red;
-}
 
 .aside {
     flex-grow: 1;
-    background-color: violet;
     border-left: 1px solid #CCC;
 }
 /* 
