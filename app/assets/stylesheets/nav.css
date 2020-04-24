@@ -3,6 +3,7 @@
     flex-grow: 1;
     border-right: 1px solid #CCC;
     position: relative;
+    flex: 1 0 auto;
 }
 
 .menu {
