@@ -28,7 +28,9 @@
             </li>
             
             <li>
-                <img src="https://picsum.photos/50" alt="account info" class="account-photo">
+                <a href="#account placeholder" class="account-info">
+                    <img src="https://picsum.photos/50" alt="account info" class="account-photo">
+                </a>        
             </li>
         </ul>
     </div>
@@ -50,30 +52,32 @@
                             <li class="active">
                                 <i class="fas fa-laptop"></i>
                                     <a href=<%root_path%> class="active">
-                                        <span>My Drive</span></a>
+                                        <span id="menu-item-title">My Drive</span></a>
 	                        </li>
 
                             <li class="shared-with-me">
                                 <i class="far fa-user"></i>
                                     <a href="shared_with_me.html">
-                                        Shared with me</a>
+                                        <span id="menu-item-title">Shared with me</span>
+                                    </a>
 	                        </li>
                             <li class="recent">
                                 <i class="far fa-clock"></i>
                                     <a href="services.html">
-                                        Recent</a>
+                                        <span id="menu-item-title">Recent</span>
+                                    </a>
                                     
 	                        </li>
                             <li class="favorites">
                                 <i class="far fa-heart"></i>
                                     <a href="favorites.html">
-                                        Favorites
+                                        <span id="menu-item-title">Favorites</span>
                                     </a>
 	                        </li>
                             <li class="trash">
                                 <i class="far fa-trash-alt"></i>
-                                        <a href="trash.html">
-                                        Trash
+                                    <a href="trash.html">
+                                        <span id="menu-item-title">Trash</span>
                                     </a>
 	                        </li>
 	                    </ul> 
@@ -159,7 +163,25 @@
         </div>
         
         <div class="aside">
-            <span>ASIDE</span>
+            <ul class="aside-elements">
+                <li>
+                    <a href="#calendar-placeholder" class="calendar-icon-link">
+                        <img src="https://picsum.photos/50" alt="calendar placeholder" class="calendar-icon">
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#note-keep-placeholder" class="note-keep-icon-link">
+                        <img src="https://picsum.photos/50" alt="note-keep placeholder" class="note-keep-icon">
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#tasks-placeholder" class="tasks-icon-link">
+                        <img src="https://picsum.photos/50" alt="tasks placeholder" class="tasks-icon">
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 

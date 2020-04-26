@@ -25,8 +25,6 @@ body {
     flex-grow: 1;
 }
 
-
-
 .aside {
     flex-grow: 1;
     border-left: 1px solid #CCC;
@@ -37,35 +35,36 @@ body {
         display: flex;
     }
 
-
-.main {
-    flex-grow: 15;
-}
-
-.main :not(.current-page) {
-    display: flex;
-}
+    .main {
+        flex-grow: 15;
+    }
 
 
-.nav {
-    flex-grow: 1;
-    border-right: 1px solid #CCC;
-    position: relative;
-    flex: 1 0 auto;
-}
+    .file-container {
+        display: flex;
+        flex-wrap: wrap;
+        flex: 1 1 auto;
+    }
 
+    .main :not(.current-page) {
+        display: flex;
+    }
 
-.header{
-    height: 100px;
-    /* flex-grow: 1; */
-    border-bottom: 1px solid hsl(0, 0%, 80%);
-    background-color: #2c292f;
-    padding:20px 10;
-    width: 100%;
-  }
+    .nav {
+        flex-grow: 1;
+        border-right: 1px solid #CCC;
+        position: relative;
+        flex: 1 0 auto;
+    }
 
-
-
+    .header{
+        height: 100px;
+        /* flex-grow: 1; */
+        border-bottom: 1px solid hsl(0, 0%, 80%);
+        background-color: #2c292f;
+        padding:20px 10;
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 650px) {
@@ -73,11 +72,46 @@ body {
     .main-section {
         display: flex;
         flex-direction: column;
+        order: 1;
     }
 
     .main-section .nav {
         flex: 0 0 0;
         padding: 0;
+        order: 2;
+    }
+
+    .dropdown {
+        display: none;
+    }
+
+    #show-storage {
+        display: none;
+    }
+
+    .menu {
+        display: flex;
+        flex-direction: row;
+        background-color: #2c292f;
+        flex: 1 1 auto;
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .menu :hover:not(i) {
+        background-color: #CCC;
+        border-radius: 20px;
+        width: 40px;
+    }
+
+    .menu .active {
+        /* background-color: #CCC; */
+        border-radius: 20px;
+        width: 40px;
+    }
+
+    #menu-item-title {
         display: none;
     }
 
@@ -87,5 +121,7 @@ body {
         justify-content: space-between;
     }
 
-    
+    .footer {
+        order: 3;
+    }   
 }
