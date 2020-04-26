@@ -101,13 +101,13 @@ body {
 
     .menu :hover:not(i) {
         background-color: #CCC;
-        border-radius: 20px;
+        /* border-radius: 20px; */
         width: 40px;
     }
 
     .menu .active {
         /* background-color: #CCC; */
-        border-radius: 20px;
+        /* border-radius: 20px; */
         width: 40px;
     }
 
@@ -123,5 +123,10 @@ body {
 
     .footer {
         order: 3;
+        display: none;
     }   
+
+    .aside {
+        display:none;
+    }
 }
