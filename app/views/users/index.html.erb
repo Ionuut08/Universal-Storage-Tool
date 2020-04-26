@@ -51,8 +51,7 @@
 	                    <ul class="menu">
                             <li class="active">
                                 <i class="fas fa-laptop"></i>
-                                    <a href=<%root_path%> class="active">
-                                        <span id="menu-item-title">My Drive</span></a>
+                                    <%=link_to 'My Drive', users_path, class: 'menu-item-title' %>
 	                        </li>
 
                             <li class="shared-with-me">
@@ -76,9 +75,7 @@
 	                        </li>
                             <li class="trash">
                                 <i class="far fa-trash-alt"></i>
-                                    <a href="trash.html">
-                                        <span id="menu-item-title">Trash</span>
-                                    </a>
+                                    <%=link_to 'Trash', trash_path, class: 'menu-item-title' %>
 	                        </li>
 	                    </ul> 
                     
